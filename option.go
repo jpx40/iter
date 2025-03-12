@@ -5,7 +5,9 @@ type Option[T any] struct{ value *T }
 
 // Some returns an Option containing a value.
 func Some[T any](v T) Option[T] {
-	return Option[T]{value: &v}
+	val := new(T)
+	*val = v
+	return Option[T]{value: val}
 }
 
 // None returns an empty Option.
